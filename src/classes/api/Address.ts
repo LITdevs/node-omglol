@@ -6,10 +6,10 @@ export default class Address implements IAddress {
 
     readonly #token: string;
     address: string;
-    expiration: { expired: boolean; will_expire: boolean; unix_epoch_time?: string; iso_8601_time?: string; rfc_2822_time?: string; relative_time?: string };
+    expiration: { message: string, expired: boolean; will_expire: boolean; unix_epoch_time?: number; iso_8601_time?: string; rfc_2822_time?: string; relative_time?: string };
     message: string;
     preferences: { include_in_directory: boolean; show_on_dashboard: boolean; statuslog: { mastodon_posting: boolean } };
-    registration: { message: string; unix_epoch_time: string; iso_8601_time: string; rfc_2822_time: string; relative_time: string };
+    registration: { message: string; unix_epoch_time: number; iso_8601_time: string; rfc_2822_time: string; relative_time: string };
     owner: string;
     verification: { verified: boolean; message: string };
 
