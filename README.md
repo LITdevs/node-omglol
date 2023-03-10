@@ -1,6 +1,6 @@
 ## omg.lol API Wrapper
 
-This is a wrapper for the omg.lol API. It is written in Typescript and is very easy to use.
+This is a wrapper for the omg.lol API. It is written in tYPEscRIPT and is very easy to use.
 
 ## Installation
 
@@ -39,3 +39,4 @@ await sessions[0].destroy();
 
 // Full list of methods can be found NOWHERE because I'm too lazy to write docs, source code is your friend
 ```
+<img src="https://user-images.githubusercontent.com/47392011/224443532-ec2ed7bf-8956-4db2-ae0c-99284fce1aff.png" width=128 />
