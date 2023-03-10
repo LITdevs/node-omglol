@@ -1,0 +1,1 @@
+{"version":3,"file":"OmgError.js","sourceRoot":"","sources":["../../src/util/OmgError.ts"],"names":[],"mappings":";;AAAA,MAAqB,QAAS,SAAQ,KAAK;IACvC,IAAI,CAAS;IACb,YAAY,IAAY,EAAE,OAAe;QACrC,KAAK,CAAC,OAAO,CAAC,CAAC;QACf,IAAI,CAAC,IAAI,GAAG,OAAO,IAAI,EAAE,CAAC;IAC9B,CAAC;CACJ;AAND,2BAMC"}
