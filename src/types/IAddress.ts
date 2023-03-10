@@ -18,11 +18,10 @@ export default interface IAddress {
         relative_time?: string; // 1 year, 4 months and 3 weeks
     }
     preferences: {
-        // TODO: i dont know what the fuck is going on here but they are not booleans
-        include_in_directory?: boolean;
-        show_on_dashboard?: boolean;
+        include_in_directory?: '1'|''|undefined|null|boolean;
+        show_on_dashboard?: '1'|''|undefined|null|boolean;
         statuslog?: {
-            mastodon_posting?: boolean;
+            mastodon_posting?: '1'|''|undefined|null|boolean;
         }
     }
 
@@ -31,5 +30,5 @@ export default interface IAddress {
         message: string; // This address has been verified.
     }
 
-    owner: string
+    owner: string; // 63fc692e95dbc
 }

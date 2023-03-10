@@ -22,6 +22,10 @@ export default class Session implements ISession {
         this.user_agent = session.user_agent;
     }
 
+    /**
+     * Removes the session
+     * @returns {Promise<boolean>} whether the session was removed
+     */
     async remove() : Promise<boolean> {
         try {
             let res : ApiResponse = await apiCall(this.#token, 'DELETE', `/account/${this.#email}/sessions/${this.session_id}`);

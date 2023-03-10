@@ -10,7 +10,7 @@ export default class Account implements IAccount {
 
     readonly #token: string;
     email: string;
-    created: { unix_epoch_time: string; iso_8601_time: string; rfc_2822_time: string; relative_time: string };
+    created: { unix_epoch_time: number; iso_8601_time: string; rfc_2822_time: string; relative_time: string };
     name: string;
     settings: IAccountSettings;
 
@@ -21,6 +21,7 @@ export default class Account implements IAccount {
         this.get();
     }
 
+    // Please don't use this, use OmgClient.getAccount() instead
     async get() : Promise<Account> {
         try {
             let res : ApiResponse = await apiCall(this.#token, 'GET', `/account/${this.email}/info`);
@@ -33,6 +34,10 @@ export default class Account implements IAccount {
         }
     }
 
+    /**
+     * Gets the addresses of the account
+     * @returns {Promise<Address[]>} the addresses of the account
+     */
     async getAddresses() : Promise<Address[]> {
         try {
             let res : ApiResponse = await apiCall(this.#token, 'GET', `/account/${this.email}/addresses`);
@@ -46,6 +51,10 @@ export default class Account implements IAccount {
         }
     }
 
+    /**
+     * Gets the name of the account
+     * @returns {Promise<string>} the name of the account
+     */
     async getName() : Promise<string> {
         try {
             let res : ApiResponse = await apiCall(this.#token, 'GET', `/account/${this.email}/name`);
@@ -69,6 +78,10 @@ export default class Account implements IAccount {
         }
     }
 
+    /**
+     * Gets the active sessions of the account
+     * @returns {Promise<Session[]>}
+     */
     async getActiveSessions() : Promise<Session[]> {
         try {
             let res : ApiResponse = await apiCall(this.#token, 'GET', `/account/${this.email}/sessions`);
@@ -82,6 +95,10 @@ export default class Account implements IAccount {
         }
     }
 
+    /**
+     * Gets the account settings
+     * @returns {Promise<AccountSettings>}
+     */
     async getSettings() : Promise<AccountSettings> {
         try {
             let res : ApiResponse = await apiCall(this.#token, 'GET', `/account/${this.email}/settings`);
