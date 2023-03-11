@@ -34,8 +34,9 @@ jobs:
         uses: actions/setup-node@v3.6.0
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Build docs
+      - name: yarn install
         run: yarn install
+      - name: Build docs
         run: yarn run docs
       - name: Upload docs folder
         uses: actions/upload-pages-artifact@v1
