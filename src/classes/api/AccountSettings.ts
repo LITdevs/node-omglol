@@ -7,9 +7,9 @@ export default class AccountSettings implements IAccountSettings {
     readonly #token: string;
     readonly #email: string;
     communication: "email_ok"|"email_not_ok"|null;
-    owner: string;
+    readonly owner: string;
     date_format: "iso_8601"|"dmy"|"mdy"|null;
-    web_editor: string;
+    web_editor: "advanced"|"classic";
 
     constructor(token: string, email: string, settings: IAccountSettings) {
         this.#token = token;
@@ -23,14 +23,12 @@ export default class AccountSettings implements IAccountSettings {
 
     /**
      * Sets the account settings
-     * UNTESTED
      * @returns {Promise<boolean>} true if successful
      */
     async set() : Promise<boolean> {
         try {
             let res : ApiResponse = await apiCall(this.#token, 'PUT', `/account/${this.#email}/settings`, {
                 communication: this.communication,
-                owner: this.owner,
                 date_format: this.date_format,
                 web_editor: this.web_editor
             });

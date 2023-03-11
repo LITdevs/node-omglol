@@ -10,7 +10,7 @@ export interface IAccountSettings {
      * The correct value in this case would be "iso_8601".
      */
     date_format: "iso_8601"|"dmy"|"mdy"|null;
-    web_editor: string;
+    web_editor: "advanced"|"classic";
 }
 
 export default interface IAccount {
