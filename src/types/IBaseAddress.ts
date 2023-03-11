@@ -1,4 +1,4 @@
-export default interface IAddress {
+export default interface IBaseAddress {
     address: string; // vukky
     message: string; // This address was registered 7 months and 1 week ago.
     keys?: {

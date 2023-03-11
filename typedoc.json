@@ -1,5 +1,6 @@
 {
     "entryPoints": ["src"],
     "out": "docs",
-    "name": "omg.lol API Wrapper"
+    "name": "omg.lol API Wrapper",
+    "internalModule": "API Reference"
 }

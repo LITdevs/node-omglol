@@ -1,20 +1,17 @@
 import {beforeAll, describe, expect, test} from '@jest/globals';
-import OmgClient from "./index";
-import Address from "./classes/api/Address";
-import Account from "./classes/api/Account";
-import AccountSettings from "./classes/api/AccountSettings";
+import OmgClient from "../../index";
+import Address from "./Address";
+import Account from "./Account";
+import AccountSettings from "./AccountSettings";
+import Session from './Session';
 
 let client
 let account
-let settings
-let addresses
 
 beforeAll(async () => {
     // Reuse the same client and account for all test cases
     client = new OmgClient(process.env.TEST_TOKEN, process.env.TEST_EMAIL);
     account = await client.getAccount();
-    settings = await account.getSettings();
-    addresses = await account.getAddresses();
 });
 
 describe('Account',  () => {
@@ -30,10 +27,16 @@ describe('Account',  () => {
     });
 
     test('Account has settings', async () => {
-        expect(settings).toBeInstanceOf(AccountSettings) // "vukky water you doin" great question
+        expect(await account.getSettings()).toBeInstanceOf(AccountSettings) // "vukky water you doin" great question
     })
 
     test('Account has addresses', async () => {
+        let addresses = await account.getAddresses();
         expect(addresses).toBeInstanceOf(Array<Address>)
+        console.log(addresses[0])
+    })
+
+    test('Account has sessions', async () => {
+        expect(await account.getActiveSessions()).toBeInstanceOf(Array<Session>)
     })
 });
