@@ -6,9 +6,9 @@ import {IAccountSettings} from "../../types/IAccount";
 export default class AccountSettings implements IAccountSettings {
     readonly #token: string;
     readonly #email: string;
-    communication: string;
+    communication: "email_ok"|"email_not_ok";
     owner: string;
-    date_format: string;
+    date_format: "iso_8601"|"dmy"|"mdy";
     web_editor: string;
 
     constructor(token: string, email: string, settings: IAccountSettings) {

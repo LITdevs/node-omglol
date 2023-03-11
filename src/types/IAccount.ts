@@ -1,8 +1,16 @@
 export interface IAccountSettings {
-    communication: string,
-    owner: string
-    date_format: string
-    web_editor: string
+    /**
+     * Due to an omg.lol bug, [this setting might be null](https://github.com/neatnik/omg.lol/issues/613).
+     * The correct value in this case would be "email_ok".
+     */
+    communication: "email_ok"|"email_not_ok";
+    owner: string;
+    /**
+     * Due to an omg.lol bug, [this setting might be null](https://github.com/neatnik/omg.lol/issues/613).
+     * The correct value in this case would be "iso_8601".
+     */
+    date_format: "iso_8601"|"dmy"|"mdy";
+    web_editor: string;
 }
 
 export default interface IAccount {

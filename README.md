@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/47392011/224443532-ec2ed7bf-8956-4db2-ae0c-99284fce1aff.png" width=128 align="left" />
+<img src="https://user-images.githubusercontent.com/47392011/224443532-ec2ed7bf-8956-4db2-ae0c-99284fce1aff.png" width=128 align="right" />
 
 This is a wrapper for the omg.lol API. It is written in TypeScript and is very easy to use.
 
