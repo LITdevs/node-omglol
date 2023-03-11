@@ -33,10 +33,13 @@ describe('Account',  () => {
     test('Account has addresses', async () => {
         let addresses = await account.getAddresses();
         expect(addresses).toBeInstanceOf(Array<Address>)
-        console.log(addresses[0])
     })
 
     test('Account has sessions', async () => {
         expect(await account.getActiveSessions()).toBeInstanceOf(Array<Session>)
+    })
+
+    test('Requesting unowned address is angy', async () => {
+        expect(async () => { await account.getAddress("adam") }).rejects.toThrowError(/^You are not allowed to get this address\./);
     })
 });
