@@ -6,7 +6,8 @@ export default class Address implements IAddress {
 
     readonly #token: string;
     address: string;
-    expiration: { message: string, expired: boolean; will_expire: boolean; unix_epoch_time?: number; iso_8601_time?: string; rfc_2822_time?: string; relative_time?: string };
+    keys: null | { pgp: Array<String>, age: Array<String>, ssh: Array<String>, minisign: Array<String>, cosign: Array<String> }
+    expiration: { message: string, expired: boolean; will_expire?: boolean; unix_epoch_time?: number; iso_8601_time?: string; rfc_2822_time?: string; relative_time?: string };
     message: string;
     preferences: { include_in_directory: boolean; show_on_dashboard: boolean; statuslog: { mastodon_posting: boolean } };
     registration: { message: string; unix_epoch_time: number; iso_8601_time: string; rfc_2822_time: string; relative_time: string };
@@ -23,6 +24,7 @@ export default class Address implements IAddress {
             let res = await apiCall(this.#token, 'GET', `/address/${this.address}/info`);
 
             this.address = res.response.address;
+            this.keys = res.response.keys || null;
             this.message = res.response.message;
             this.registration = res.response.registration;
             this.expiration = res.response.expiration;
