@@ -32,6 +32,7 @@ export default async function apiCall(token: string, path: string, method: strin
 
         return response;
     } catch (e) {
+        if (e.response?.status !== 401) throw e;
         throw new OmgError("API_UNAUTHORIZED", `You are not permitted to make an API call to ${path}: ${e?.message}`)
     }
 }

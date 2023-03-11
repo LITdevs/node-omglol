@@ -8,6 +8,10 @@
   "author": "LIT Devs (Vukkyy)",
   "license": "SEE LICENSE IN LICENSE.md",
   "devDependencies": {
+    "@jest/globals": "^29.5.0",
+    "dotenv": "^16.0.3",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.0.5",
     "typedoc": "^0.23.26",
     "typedoc-plugin-missing-exports": "^1.0.0",
     "typedoc-plugin-rename-defaults": "^0.6.4",

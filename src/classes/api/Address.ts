@@ -2,6 +2,8 @@ import IBaseAddress from "../../types/IBaseAddress";
 import IOwnedAddress from "../../types/IOwnedAddress";
 import apiCall from "../../util/apiCall";
 import OmgError from "../wrapper/OmgError";
+import DNSRecord from "./DNSRecord";
+import Authenticated from "../../util/Authenticated";
 
 export default class Address implements IBaseAddress, IOwnedAddress {
 
@@ -47,4 +49,24 @@ export default class Address implements IBaseAddress, IOwnedAddress {
             throw new OmgError("API_ERROR", `An error occurred while fetching address info for ${this.address}: ${e?.message}`);
         }
     }
+
+    /**
+     * Retrieve DNS records for this address
+     * @returns {Promise<DNSRecord[]>} the DNS records
+     */
+    @Authenticated()
+    async getDNSRecords() : Promise<DNSRecord[]> {
+        try {
+            let res = await apiCall(this.#token, `/address/${this.address}/dns`, 'GET');
+            let records = [];
+            for (let record of res.response.dns) {
+                records.push(new DNSRecord(this.#token, this.address, record));
+            }
+            return records;
+        } catch (e) {
+            if (e.code === "OMG_API_UNAUTHORIZED") throw new OmgError("API_UNAUTHORIZED", "You are not allowed to get this address. If you are trying to use Account.getAddress() it is probably not linked to this account, use OmgClient.getAddress() instead to get public data.");
+            throw new OmgError("API_ERROR", `An error occurred while fetching DNS records for ${this.address}: ${e?.message}`);
+        }
+    }
+
 }
