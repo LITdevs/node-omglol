@@ -1,6 +1,6 @@
-## omg.lol API Wrapper
+<img src="https://user-images.githubusercontent.com/47392011/224443532-ec2ed7bf-8956-4db2-ae0c-99284fce1aff.png" width=128 align="right" />
 
-This is a wrapper for the omg.lol API. It is written in tYPEscRIPT and is very easy to use.
+This is a wrapper for the omg.lol API. It is written in TypeScript and is very easy to use.
 
 ## Installation
 
@@ -37,6 +37,5 @@ const sessions = await account.getActiveSessions();
 // You can then destroy a session
 await sessions[0].destroy();
 
-// Full list of methods can be found NOWHERE because I'm too lazy to write docs, source code is your friend
+// Full list of methods are still being worked on, but should be found at https://litdevs.github.io/node-omglol/classes/OmgClient-1.html
 ```
-<img src="https://user-images.githubusercontent.com/47392011/224443532-ec2ed7bf-8956-4db2-ae0c-99284fce1aff.png" width=128 />
