@@ -27,13 +27,14 @@ export default class AccountSettings implements IAccountSettings {
      */
     async set() : Promise<boolean> {
         try {
-            let res : ApiResponse = await apiCall(this.#token, 'PUT', `/account/${this.#email}/settings`, {
+            let res : ApiResponse = await apiCall(this.#token, `/account/${this.#email}/settings`, 'PUT', {
                 communication: this.communication,
                 date_format: this.date_format,
                 web_editor: this.web_editor
             });
             return res.response.success;
         } catch (e) {
+            if (e.code === "OMG_API_UNAUTHORIZED") throw e;
             throw new OmgError("API_ERROR", `An error occurred while setting account settings: ${e?.message}`);
         }
     }

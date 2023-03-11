@@ -28,9 +28,10 @@ export default class Session implements ISession {
      */
     async remove() : Promise<boolean> {
         try {
-            let res : ApiResponse = await apiCall(this.#token, 'DELETE', `/account/${this.#email}/sessions/${this.session_id}`);
+            let res : ApiResponse = await apiCall(this.#token, `/account/${this.#email}/sessions/${this.session_id}`, 'DELETE');
             return res.response.success;
         } catch (e) {
+            if (e.code === "OMG_API_UNAUTHORIZED") throw e;
             throw new OmgError("API_ERROR", `An error occurred while removing session ${this.session_id}: ${e?.message}`);
         }
     }
