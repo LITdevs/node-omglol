@@ -1,6 +1,10 @@
 export default interface IAddress {
     address: string; // vukky
-    keys?: null | {
+    /**
+     * If no keys were found, this is null.
+     * @see https://home.omg.lol/info/keys
+     */
+    keys: null | {
         pgp: Array<String>,
         age: Array<String>,
         ssh: Array<String>,
